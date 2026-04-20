@@ -1,0 +1,20 @@
+name: Github Actions Demo
+
+on:
+  push:
+      branches: [ main ]
+      paths-ignore: [.github/**]
+  pull_request:
+      branches: [main ]
+  schedule:
+    -cron: '15 06 * * 0'
+  workflow_dispatch: 
+
+  jobs:
+    Build:
+      runs-on: ubuntu-latest
+      steps:
+        - run: |
+            echo "Hello, Github Actions!"
+            echo "This job was triggered by the event: ${{ github.event_name }}"
+            
