@@ -7,14 +7,24 @@ on:
   pull_request:
       branches: [main ]
   schedule:
-    -cron: '15 06 * * 0'
+    - cron: '15 06 * * 0'
   workflow_dispatch: 
 
   jobs:
     Build:
       runs-on: ubuntu-latest
       steps:
-        - run: |
-            echo "Hello, Github Actions!"
+         run: |
             echo "This job was triggered by the event: ${{ github.event_name }}"
+            echo "The current branch is ${{ github.ref }} of the repository ${{ github.repository }}"
+
+  - uses: actions/checkout@v6.0.2
+  
+  - name: List all the files in the repo
+  run: |
+  echo "The repository ${{ github.repository }} contains the following files:"
+  tree
+  
+  
+            
             
